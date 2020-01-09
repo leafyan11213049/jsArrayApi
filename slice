@@ -1,0 +1,10 @@
+Array.prototype.slice.call(arguments, 0)   将调用方法的参数截取出来
+
+基础
+1.js的slice方法
+array.slice(start, end)  从已有的数组中返回选定的元素  star必须，[start, end), start为负数时，从尾部开始
+2.call, apply, bind
+改变函数执行时的上下文，改变函数执行时的this指向
+
+
+
