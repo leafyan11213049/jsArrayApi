@@ -1,0 +1,51 @@
+js中不管是严格模式还是非严格模式，this都是指向顶层对象的,浏览器中是window
+
+var声明   全局变量会绑定到window上面，所以settimeout里面的this指向window时，可以取到值
+let声明   全局变量不会绑定到window上面，所以settimeout里面的this指向window时，取不到值
+严格模式下 this === undefined
+
+
+
+
+var age = '123';
+        var obj = {
+            age: 12,
+            showAge: function() {
+                console.log(this);
+                console.log(this.age);
+            },
+            severalTimeShow: function() {
+                setTimeout(function() {
+                    console.log(this);
+                    console.log(this.age);
+                });
+            }
+        }
+        obj.showAge();  // 12 obj
+        obj.severalTimeShow(); // 123 window
+
+        let age1 = '123';
+        let obj1 = {
+            age1: 1234,
+            showAge: function() {
+                console.log(this);
+                console.log(this.age1);
+            },
+            setTimeoutShow: function() {
+                setTimeout(function() {
+                    console.log(this);
+                    console.log(this.age1);
+                });
+            }
+        }
+        obj1.showAge();    // 1234  obj1
+        obj1.setTimeoutShow();   // undefined  window
+        
+        
+         var name = 'window';
+        var doSth = function(){
+            'use strict'
+           console.log(typeof this === 'undefined');
+           console.log(this.name);
+        }
+          doSth(); // true，// 报错，因为this是undefined
