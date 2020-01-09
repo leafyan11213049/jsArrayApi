@@ -1,2 +1,27 @@
 call 使用一个指定的this值和单独给出的一个或者多个参数来调用一个函数
+apply和call使用差不多，只不过apply接受的是一个参数列表
+fn.call(thisArg, param1, param2, ....)
+thisArg可能和实际对应的不是同一个，在非严格模式下，当thisArg=null/undefined === window,当严格模式下，就是对应的null/undefined
+call方法允许为不同的对象分配和调用属于一个对象的属性和方法
+
+1.使用call方法调用父构造函数，实现继承，可以避免重复代码
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+
+function Food(name, price) {
+    Product.call(this, name, price);
+    this.category = 'food';
+}
+
+var food = new Food('cheese', 5);
+var produce = new Product('vegetable', 1.2);
+console.log(food.name);   //cheese
+
+
+2.
+
+
+
 
